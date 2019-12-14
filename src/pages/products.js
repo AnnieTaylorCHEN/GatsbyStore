@@ -6,20 +6,33 @@ import Layout from '../components/layout'
 
 const Products = ({ data: { allContentfulProduct}}) => (
     <Layout>
-        <div>
+        <div
+        
+        >
+            <h2>Gatsby Store Products</h2>
+            <div 
+            style={{
+                display: 'flex',
+                flexWrap: 'wrap'
+            }}>
             {/* Product list */}
             {allContentfulProduct.edges.map(({ node: product }) => (
-                <div key={product.id}>
-                <h2>Gatsby Store Products</h2>
-                <Link to={`/products/${product.slug}`}>
-                    <h3>{product.name}</h3>
-                </Link>
-                <Img 
-                    style={{maxWidth: 400}}
-                    fluid={product.image.fluid}
-                />
+                <div 
+                key={product.id}
+                style={{
+                    margin: '1em'
+                }}
+                >
+                    <Link to={`/products/${product.slug}`}>
+                        <h3>{product.name}</h3>
+                    </Link>
+                    <Img 
+                        style={{maxWidth: 400}}
+                        fluid={product.image.fluid}
+                    />
                 </div>
             ))}
+            </div>
         </div>
     </Layout>
 )
